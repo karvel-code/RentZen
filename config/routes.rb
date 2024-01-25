@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   scope module: :admin, path: '/a' do
     get 'dashboard/index'
   end
+
+  scope module: :tenant, path: '/t' do
+    get 'dashboard/index'
+  end
+
 end
