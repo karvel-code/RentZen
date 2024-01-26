@@ -6,6 +6,7 @@ class CreateApartments < ActiveRecord::Migration[7.0]
       t.decimal :latitude
       t.decimal :longitude
       t.integer :no_of_units, null: false
+      t.references :account, null: false, foreign_key: true
 
       t.timestamps
     end

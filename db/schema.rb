@@ -31,8 +31,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_054801) do
     t.decimal "latitude"
     t.decimal "longitude"
     t.integer "no_of_units", null: false
+    t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_apartments_on_account_id"
     t.index ["name"], name: "index_apartments_on_name"
   end
 
@@ -46,5 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_054801) do
     t.index ["account_id"], name: "index_landlords_on_account_id"
   end
 
+  add_foreign_key "apartments", "accounts"
   add_foreign_key "landlords", "accounts"
 end
