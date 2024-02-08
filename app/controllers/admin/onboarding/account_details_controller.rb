@@ -8,12 +8,10 @@ module Admin
     def create
       @account = Account.new(account_params)
       
-      respond_to do |format|
-        if @account.save
-          format.html { redirect_to new_onboarding_landlord_detail_path(account_id: @account.id), notice: "Account Created Successfully"  }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-        end
+      if @account.save
+        redirect_to new_onboarding_landlord_detail_path(account_id: @account.id), notice: "Account Created Successfully"
+      else
+        render :new, status: :unprocessable_entity
       end
     end
 

@@ -8,13 +8,11 @@ module Admin
     def create
       @landlord = Landlord.new(landlord_params)
       
-      respond_to do |format|
         if @landlord.save
-          format.html { redirect_to dashboard_index_path, notice: "Onboarding completed Successfully"  }
+          redirect_to dashboard_index_path, notice: "Onboarding completed Successfully"
         else
-          format.html { render :new, status: :unprocessable_entity }
+          render :new, status: :unprocessable_entity
         end
-      end
     end
 
     private
