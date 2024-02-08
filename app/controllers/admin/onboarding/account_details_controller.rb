@@ -10,7 +10,7 @@ module Admin
       
       respond_to do |format|
         if @account.save
-          format.html { redirect_to new_onboarding_landlord_detail_path, notice: "Account Created Successfully"  }
+          format.html { redirect_to new_onboarding_landlord_detail_path(account_id: @account.id), notice: "Account Created Successfully"  }
         else
           format.html { render :new, status: :unprocessable_entity }
         end

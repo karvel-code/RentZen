@@ -1,8 +1,9 @@
 <div>
   <h1 class="text-3xl font-bold leading-6 mb-6">Company Details </h1>
   <p> Fill in company details and proceed to next step </p>
+  <% account_id = params[:account_id] %>
   <%= form_with(model: @landlord, url: onboarding_landlord_details_path, method: :post) do |form| %>
-
+    <%= form.hidden_field :account_id, value: account_id %>
     <div>
       <%= form.label :first_name, class: "block text-sm font-medium mb-2 " %>
       <%= form.text_field :first_name, class: "py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none border-gray-700 dark:focus:ring-gray-600" %>
