@@ -22,6 +22,5 @@ module Admin
     def landlord_params
       params.require(:landlord).permit(:first_name, :surname, :phone, :account_id)
     end
-
   end
 end

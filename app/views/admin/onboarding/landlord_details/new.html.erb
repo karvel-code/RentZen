@@ -1,6 +1,5 @@
 <div>
-  <h1 class="text-3xl font-bold leading-6 mb-6">Company Details </h1>
-  <p> Fill in company details and proceed to next step </p>
+  <h1 class="text-3xl font-bold leading-6 mb-6">Landlord Details </h1>
   <% account_id = params[:account_id] %>
   <%= form_with(model: @landlord, url: onboarding_landlord_details_path, method: :post) do |form| %>
     <%= form.hidden_field :account_id, value: account_id %>
