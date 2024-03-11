@@ -1,0 +1,30 @@
+<%# The "base" layout contains boilerplate common to *all* views. %>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Flexigig <%#= Rails.application.config.version %> (<%#= l(Rails.application.config.version_time) %>) -->
+		<%= capybara_lockstep if defined?(Capybara::Lockstep) %>
+		<title>
+			<%= "#{strip_tags(yield(:title))} – " if content_for?(:title) %>
+			RentZen
+		</title>
+		<%# Specifies the default name of home screen bookmark in iOS %>
+		<meta name="apple-mobile-web-app-title" content="Flexigig">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+		<%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+		<%= yield(:head) %>
+	</head>
+	<body>
+		<div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+			<div class="mx-auto max-w-2xl">
+				<%# if notice || alert %>
+					<%#= render "shared/alerts/show", locals: { alert: alert, notice: notice}  %>
+				<%# end %>
+				<%= yield %>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "modal" do %>
+  <div aria-labelledby="modal-title"
+    aria-modal="true" class="fixed inset-0 z-50 overflow-y-auto bg-black/80" role="dialog">
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <div class="shadow-xl max-w-2xl bg-white m-1 p-8 prose prose-indigo origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200 min-w-[600px] rounded-2xl animate-fade-in-up">
+        <h1 id="modal-title" class="dark:text-slate-100">Create Apartment</h1>
+        <%= render "form" %>
+      </div>
+    </div>
+  </div>
+<% end %>
