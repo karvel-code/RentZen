@@ -1,5 +1,6 @@
 class Admin::ApartmentsController < Admin::BaseController
   before_action :set_apartment, only: %i[edit update destroy]
+  before_action :set_account, only: %i[create]
 
   def index
     @apartments = Apartment.order("created_at DESC")
@@ -10,12 +11,15 @@ class Admin::ApartmentsController < Admin::BaseController
   end
 
   def create
-    @apartment = Apartment.new(apartment_params)
-    
-    if @apartment.save
-      redirect_to apartments_path, notice: "Apartment added successfully"
-    else
-      render :new, status: :unprocessable_entity
+    @apartment = @current_account.apartments.build(apartment_params)
+
+    respond_to do |format|
+      if @apartment.save
+        format.html {redirect_to apartments_path, notice: "Apartment added successfully" }
+        format.turbo_stream
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
@@ -35,7 +39,11 @@ class Admin::ApartmentsController < Admin::BaseController
   private
 
   def apartment_params
-    params.require(:apartment).permit(:name, :location, :no_of_units)
+    params.require(:apartment).permit(:name, :location, :no_of_floors)
+  end
+
+  def set_account
+    @current_account = Account.first
   end
 
   def set_apartment

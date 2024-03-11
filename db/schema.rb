@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_26_054801) do
     t.string "location", null: false
     t.decimal "latitude"
     t.decimal "longitude"
-    t.integer "no_of_units", null: false
+    t.integer "no_of_floors", null: false
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
