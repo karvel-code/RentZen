@@ -1,5 +1,5 @@
 class Admin::ApartmentsController < Admin::BaseController
-  before_action :set_apartment, only: %i[edit update destroy]
+  before_action :set_apartment, only: %i[edit update destroy show]
   before_action :set_account, only: %i[create]
 
   def index
@@ -8,6 +8,10 @@ class Admin::ApartmentsController < Admin::BaseController
 
   def new
     @apartment = Apartment.new
+  end
+
+  def show
+    @floors = @apartment.floors
   end
 
   def create
