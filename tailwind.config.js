@@ -3,10 +3,7 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js',
-    'node_modules/preline/dist/*.js'
+    './app/javascript/**/*.js'
   ],
-  plugins: [
-    require('preline/plugin'),
-  ]
+  plugins: []
 }
