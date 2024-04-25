@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   scope module: :admin, path: '/a' do
     get 'dashboard/index'
     resources :apartments
+    resources :floors
 
     namespace :onboarding, path: 'onboarding' do
       resources :account_details, only: %i[new create]
