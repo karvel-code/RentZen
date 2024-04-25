@@ -1,2 +1,2 @@
-<%= turbo_stream.append "apartments", @apartment %>
+<%= turbo_stream.prepend "apartments", @apartment %>
 <%= turbo_stream.update Apartment.new, "" %>
