@@ -7,6 +7,9 @@ module.exports = {
     './node_modules/flowbite/**/*.js'
   ],
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+
   ]
 }
