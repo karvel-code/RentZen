@@ -1,5 +1,5 @@
 <div>
-  <%= form_with(model: @apartment, url: apartments_path, method: :post) do |form| %>
+  <%= form_with(model: @apartment, data: { turbo_frame: '_top'}) do |form| %>
 
     <div>
       <%= form.label :name, class: "block text-sm font-medium mb-2 " %>
@@ -18,7 +18,7 @@
 
     <div class="mt-4">
       <%= link_to "Cancel", apartments_path, data: { turbo_frame: "_top" }, class: "py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"%>
-      <%= form.submit "Create Apartment", class: "py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
+      <%= form.submit class: "py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
     </div>
   <% end %>
 </div>
