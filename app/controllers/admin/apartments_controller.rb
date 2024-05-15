@@ -3,7 +3,7 @@ class Admin::ApartmentsController < Admin::BaseController
   before_action :set_account, only: %i[create]
 
   def index
-    @apartments = Apartment.order("created_at DESC")
+    @apartments = Apartment.order(created_at: :desc)
   end
 
   def new
@@ -11,7 +11,7 @@ class Admin::ApartmentsController < Admin::BaseController
   end
 
   def show
-    @floors = @apartment.floors
+    @floors = @apartment.floors.order(created_at: :desc)
   end
 
   def create
@@ -30,14 +30,19 @@ class Admin::ApartmentsController < Admin::BaseController
   def edit; end
 
   def update
-    if @apartment.update(apartment_params)
-      redirect_to apartments_path, notice: "Apartment updated successfully"
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @apartment.update(apartment_params)
+        format.html { redirect_to apartments_path, notice: "Apartment updated successfully" }
+        # format.turbo_stream
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
+    @apartment.destroy
+    redirect_to apartments_path, notice: 'Apartment Deleted Successfully !'
   end
 
   private

@@ -1,4 +1,4 @@
-<tr id="<%= apartment.id %>" class="border-b dark:border-gray-700">
+<tr id="<%= apartment %>" class="border-b dark:border-gray-700">
     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"><%= apartment.name %></th>
     <td class="px-4 py-3"><%= apartment.location %></td>
     <td class="px-4 py-3">Status</td>
@@ -13,14 +13,14 @@
         <div id="<%= apartment.id %>-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
             <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="<%= apartment.id %>-dropdown-button">
                 <li>
-                    <%= link_to "Show" ,apartment_path(apartment), class: "block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+                    <%= link_to "Show", apartment_path(apartment), class: "block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
                 </li>
                 <li>
-                    <%= link_to "Edit" , "#", class: "block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+                    <%= link_to "Edit", edit_apartment_path(apartment), data: { turbo_frame: "modal"}, class: "block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
                 </li>
             </ul>
             <div class="py-1">
-                <%= link_to "Delete" , "#", class: "block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
+                <%= link_to "Delete", apartment_path(apartment), data: { turbo_frame: "_top", "turbo_method": :delete, turbo_confirm: "Are you sure?" }, class: "block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" %>
             </div>
         </div>
     </td>

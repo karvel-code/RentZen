@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <meta name="turbo-cache-control" content="no-cache">
   </head>
 
   <body>
@@ -23,6 +24,5 @@
       </div>
     </div>
     <%= turbo_frame_tag "modal" %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.turbo.min.js"></script>
   </body>
 </html>
