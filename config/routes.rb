@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       resources :floors
     end
 
+    resources :floors do
+      resources :units
+    end
+
     namespace :onboarding, path: 'onboarding' do
       resources :account_details, only: %i[new create]
       resources :landlord_details, only: %i[new create]
@@ -19,5 +23,4 @@ Rails.application.routes.draw do
   scope module: :tenant, path: '/t' do
     get 'dashboard/index'
   end
-
 end

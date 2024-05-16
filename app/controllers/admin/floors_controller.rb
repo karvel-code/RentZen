@@ -6,7 +6,9 @@ class Admin::FloorsController < Admin::BaseController
     @floor = @current_apartment.floors.build
   end
 
-  def show; end
+  def show
+    @units = @floor.units.order(created_at: :desc)
+  end
 
   def create
     @floor = @current_apartment.floors.build(floor_params)
