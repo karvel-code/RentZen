@@ -1,6 +1,9 @@
 class Apartment < ApplicationRecord
   belongs_to :account
-  has_many :floors, dependent: :destroy
+  with_options dependent: :destroy do
+    has_many :floors
+    has_many :units, through: :floors
+  end
 
   after_create_commit :create_floors
   

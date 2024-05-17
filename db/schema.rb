@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_11_165605) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_15_111843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +57,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_165605) do
     t.index ["account_id"], name: "index_landlords_on_account_id"
   end
 
+  create_table "units", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "floor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["floor_id"], name: "index_units_on_floor_id"
+    t.index ["name"], name: "index_units_on_name"
+  end
+
   add_foreign_key "apartments", "accounts"
   add_foreign_key "floors", "apartments"
   add_foreign_key "landlords", "accounts"
+  add_foreign_key "units", "floors"
 end
