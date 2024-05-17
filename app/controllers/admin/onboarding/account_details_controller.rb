@@ -9,7 +9,7 @@ module Admin
       @account = Account.new(account_params)
       
       if @account.save
-        redirect_to new_onboarding_landlord_detail_path(account_id: @account.id), notice: "Account Created Successfully"
+        redirect_to new_onboarding_admin_user_detail_path(account_id: @account.id), notice: "Account Created Successfully"
       else
         render :new, status: :unprocessable_entity
       end

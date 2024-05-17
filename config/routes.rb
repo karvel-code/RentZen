@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     namespace :onboarding, path: 'onboarding' do
       resources :account_details, only: %i[new create]
-      resources :landlord_details, only: %i[new create]
+      resources :admin_user_details, only: %i[new create]
     end
 
   end
