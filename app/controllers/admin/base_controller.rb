@@ -5,4 +5,6 @@ class Admin::BaseController < ApplicationController
   def current_account
     current_admin_user.account
   end
+
+  helper_method :current_account
 end
