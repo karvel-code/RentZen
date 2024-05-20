@@ -1,7 +1,6 @@
 <div>
   <h1 class="text-3xl font-bold leading-6 mb-6">Landlord Details </h1>
-  <%= form_with(model: @admin_user, url: onboarding_admin_user_details_path, method: :post) do |form| %>
-    <%= form.hidden_field :account_id, value: account_id %>
+  <%= form_with(model: @admin_user_profile, url: onboarding_admin_user_profiles_path, method: :post) do |form| %>
     <div>
       <%= form.label :first_name, class: "block text-sm font-medium mb-2 " %>
       <%= form.text_field :first_name, class: "py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none border-gray-700 dark:focus:ring-gray-600" %>

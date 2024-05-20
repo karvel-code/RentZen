@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_114937) do
   create_table "admin_user_profiles", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "surname", null: false
-    t.string "phone"
+    t.string "phone", null: false
     t.bigint "admin_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

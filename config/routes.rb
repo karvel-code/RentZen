@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :admin_users
+  devise_for :admin_users, controllers: {
+    registrations: 'admin_users/registrations',
+    # sessions: 'admin_users/sessions',
+    # omniauth_callbacks: 'admin_users/omniauth_callbacks',
+    # invitations: 'admin_users/invitations'
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -16,7 +21,7 @@ Rails.application.routes.draw do
 
     namespace :onboarding, path: 'onboarding' do
       resources :account_details, only: %i[new create]
-      resources :admin_user_details, only: %i[new create]
+      resources :admin_user_profiles, only: %i[new create]
     end
 
   end
