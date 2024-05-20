@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_15_111843) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_17_114937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,30 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_15_111843) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_user_profiles", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "surname", null: false
+    t.string "phone", null: false
+    t.bigint "admin_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_admin_user_profiles_on_admin_user_id"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_admin_users_on_account_id"
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
   create_table "apartments", force: :cascade do |t|
@@ -66,6 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_15_111843) do
     t.index ["name"], name: "index_units_on_name"
   end
 
+  add_foreign_key "admin_user_profiles", "admin_users"
+  add_foreign_key "admin_users", "accounts"
   add_foreign_key "apartments", "accounts"
   add_foreign_key "floors", "apartments"
   add_foreign_key "landlords", "accounts"
