@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_17_114937) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_21_171127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_114937) do
     t.index ["account_id"], name: "index_landlords_on_account_id"
   end
 
+  create_table "owner_informations", force: :cascade do |t|
+    t.bigint "unit_owner_id", null: false
+    t.bigint "unit_id", null: false
+    t.string "status", default: "invited", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_owner_informations_on_unit_id"
+    t.index ["unit_owner_id"], name: "index_owner_informations_on_unit_owner_id"
+  end
+
+  create_table "unit_owners", force: :cascade do |t|
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "units", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "floor_id", null: false
@@ -95,5 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_114937) do
   add_foreign_key "apartments", "accounts"
   add_foreign_key "floors", "apartments"
   add_foreign_key "landlords", "accounts"
+  add_foreign_key "owner_informations", "unit_owners"
+  add_foreign_key "owner_informations", "units"
   add_foreign_key "units", "floors"
 end
