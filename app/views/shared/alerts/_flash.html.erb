@@ -1,0 +1,17 @@
+<div data-controller="flash" id="flash">
+	<% flash.each do |type, message| %>
+		<% if type == "notice" %>
+			<div class="mt-2 bg-teal-100 border border-teal-200 text-sm text-teal-800 rounded-lg p-4 dark:bg-teal-800/10 dark:border-teal-900 dark:text-teal-500" role="alert">
+				<span class="font-bold">Success</span> <%= message %>.
+			</div>
+		<% elsif type == "error" %>
+			<div class="mt-2 bg-red-100 border border-red-200 text-sm text-red-800 rounded-lg p-4 dark:bg-red-800/10 dark:border-red-900 dark:text-red-500" role="alert">
+				<span class="font-bold">Danger</span> <%= message %>.
+			</div>
+		<% else %>
+			<div class="mt-2 bg-yellow-100 border border-yellow-200 text-sm text-yellow-800 rounded-lg p-4 dark:bg-yellow-800/10 dark:border-yellow-900 dark:text-yellow-500" role="alert">
+				<span class="font-bold">Warning</span> <%= message %>.
+			</div>
+		<% end %>
+	<% end %>
+</div>

@@ -1,2 +1,3 @@
 <%= turbo_stream.prepend "apartments", @apartment %>
 <%= turbo_stream.update Apartment.new, "" %>
+<%= render_flash_stream %>
