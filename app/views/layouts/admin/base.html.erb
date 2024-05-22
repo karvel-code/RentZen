@@ -20,6 +20,9 @@
         <%= render "layouts/admin/navigation" %>
       </div>
       <div class="bg-gray-50 dark:bg-gray-900 md:col-span-10 min-h-full">
+        <% if notice || alert %>
+          <%= render "shared/alerts/flash", locals: { alert: alert, notice: notice}  %>
+        <% end %>
         <%= yield %>
       </div>
     </div>
