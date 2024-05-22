@@ -7,3 +7,10 @@ import Alpine from "alpinejs"
 window.Alpine = Alpine
 
 Alpine.start()
+
+document.addEventListener("turbo:load", function(event) {
+  HSAccordion.autoInit();
+  HSDropdown.autoInit();
+  HSOverlay.autoInit();
+  HSSelect.autoInit();
+});
