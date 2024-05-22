@@ -4,12 +4,11 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js',
-    './node_modules/flowbite/**/*.js'
+    'node_modules/preline/dist/*.js'
   ],
   plugins: [
-    require('flowbite/plugin'),
     require('tailwindcss'),
     require('autoprefixer'),
-
+    require('preline/plugin'),
   ]
 }
