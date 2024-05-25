@@ -1,13 +1,11 @@
 <div class="max-w-4xl p-0 md:px-4 md:py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   <div class="bg-white md:rounded-xl shadow dark:bg-neutral-900">
     <div class="relative h-36 md:h-60 rounded-none md:rounded-t-xl bg-[url('https://preline.co/assets/svg/examples/abstract-bg-1.svg')] bg-no-repeat bg-cover bg-center">
-      <div class="absolute top-0 end-0 p-4">
-      </div>
     </div>
     <div class="px-6 py-12 md:p-12 bg-white">
       <div class="mb-6">
         <h1 class="text-3xl font-bold leading-6 mb-4">Company Details </h1>
-        <p> Fill in company details and proceed to next step </p>
+        <p>Please fill in company details and proceed to next step.</p>
       </div>
       <%= form_with(model: @account, url: onboarding_account_details_path, method: :post) do |form| %>
         <div class="mb-4">
@@ -33,6 +31,4 @@
       <% end %>
     </div>
   </div>
-
-
 </div>
