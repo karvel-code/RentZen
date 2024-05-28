@@ -16,17 +16,13 @@ class Admin::UnitOwner::InvitationsController < Admin::BaseController
 
     invitee = UnitOwner.invite!({email: invite_params[:email]}, current_admin_user)
     
-    unit_id = invite_params.dig(:owner_informations_attributes, 0, :unit_id)
-    OwnerInformation.create(unit_id: unit_id , unit_owner_id: invitee.id) if invitee
+    unit_id = invite_params[:unit_id]
+    OwnerInformation.create!(unit_id: unit_id , unit_owner_id: invitee.id) if invitee
   end
 
   private
 
   def invite_params
-    params.require(:unit_owner).permit(:email, owner_informations_attributes: [:unit_id])
-  end
-
-  def unit_id_params
-    invite_params.dig(:owner_informations_attributes, 0, :unit_id)
+    params.require(:unit_owner).permit(:email, :unit_id)
   end
 end
