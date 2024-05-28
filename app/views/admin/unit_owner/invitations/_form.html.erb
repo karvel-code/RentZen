@@ -1,5 +1,5 @@
 <div>
-  <%= form_with(path: unit_owner_unit_invitations_path, method: :post, data: { turbo_frame: '_top'}) do |form| %>
+  <%= form_with(model: @unit_owner, url: unit_owner_unit_invitations_path(unit_id: @unit.id), method: :post, data: { turbo_frame: '_top'}) do |form| %>
     <%= form.hidden_field :unit_id, value: @unit.id %>
     <div>
       <%= form.label :email, class: "block text-sm font-medium mb-2 " %>
