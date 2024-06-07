@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, controllers: {
     registrations: 'admin_users/registrations',
-    # sessions: 'admin_users/sessions',
+    sessions: 'admin_users/sessions',
     # omniauth_callbacks: 'admin_users/omniauth_callbacks',
     # invitations: 'admin_users/invitations'
   }
