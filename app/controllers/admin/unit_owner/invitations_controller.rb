@@ -16,8 +16,9 @@ class Admin::UnitOwner::InvitationsController < Admin::BaseController
 
     invitee = UnitOwner.invite!({email: invite_params[:email]}, current_admin_user)
     
-    unit_id = invite_params[:unit_id]
-    OwnerInformation.create!(unit_id: unit_id , unit_owner_id: invitee.id) if invitee
+    unit = Unit.find(invite_params[:unit_id])
+    OwnerInformation.create!(unit_id: unit.id , unit_owner_id: invitee.id) if invitee
+    redirect_to floor_unit_path(floor_id: unit.floor.id, id: unit.id ), notice: "You have successfully invited a tenant to this unit."
   end
 
   private
