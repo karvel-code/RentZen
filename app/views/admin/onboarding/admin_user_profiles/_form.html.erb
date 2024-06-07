@@ -1,23 +1,32 @@
-<div>
-  <h1 class="text-3xl font-bold leading-6 mb-6">Landlord Details </h1>
-  <%= form_with(model: @admin_user_profile, url: onboarding_admin_user_profiles_path, method: :post) do |form| %>
-    <div>
-      <%= form.label :first_name, class: "block text-sm font-medium mb-2 " %>
-      <%= form.text_field :first_name, class: "py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none border-gray-700 dark:focus:ring-gray-600" %>
+<div class="max-w-4xl p-0 md:px-4 md:py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="bg-white md:rounded-xl shadow dark:bg-neutral-900">
+    <div class="relative h-36 md:h-60 rounded-none md:rounded-t-xl bg-[url('https://preline.co/assets/svg/examples/abstract-bg-1.svg')] bg-no-repeat bg-cover bg-center">
     </div>
+    <div class="px-6 py-12 md:p-12 bg-white md:rounded-b-xl">
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold leading-6 mb-6">Landlord Details </h1>
+        <p> Please fill in landlord details to complete onboarding process. </p>
+      </div>
+      <%= form_with(model: @admin_user_profile, url: onboarding_admin_user_profiles_path, method: :post) do |form| %>
+        <div class="mb-4">
+          <%= form.label :first_name, class: "inline-block text-lg font-medium text-gray-800 mb-2 dark:text-neutral-200" %>
+          <%= form.text_field :first_name, class: "py-3 px-3 pe-11 block w-full border-2 border-gray-200 shadow-sm rounded-lg text-base focus:outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 bg-gray-100", placeholder: "first name" %>
+        </div>
 
-    <div>
-      <%= form.label :surname, class: "block text-sm font-medium mb-2 " %>
-      <%= form.text_field :surname, class: "py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none border-gray-700 dark:focus:ring-gray-600" %>
-    </div>
+        <div class="mb-4">
+          <%= form.label :surname, class: "inline-block text-lg font-medium text-gray-800 mb-2 dark:text-neutral-200" %>
+          <%= form.text_field :surname, class: "py-3 px-3 pe-11 block w-full border-2 border-gray-200 shadow-sm rounded-lg text-base focus:outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 bg-gray-100", placeholder: "surname" %>
+        </div>
 
-    <div>
-      <%= form.label :phone, class: "block text-sm font-medium mb-2 " %>
-      <%= form.text_field :phone, class: "py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none border-gray-700 dark:focus:ring-gray-600" %>
-    </div>
+        <div class="mb-4">
+          <%= form.label :phone, class: "inline-block text-lg font-medium text-gray-800 mb-2 dark:text-neutral-200" %>
+          <%= form.text_field :phone, class: "py-3 px-3 pe-11 block w-full border-2 border-gray-200 shadow-sm rounded-lg text-base focus:outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 bg-gray-100", placeholder: "leon mk" %>
+        </div>
 
-    <div class="mt-4">
-      <%= form.submit "Complete Onboarding", class: "py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
+        <div class="mt-4 w-full md:w-1/5">
+          <%= form.submit "Complete", class: "w-full py-3 px-4 items-center gap-x-2 text-base text-center font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+</div> 
