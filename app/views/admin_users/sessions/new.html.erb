@@ -1,26 +1,36 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="max-w-4xl p-0 md:px-4 md:py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="bg-white md:rounded-xl shadow dark:bg-neutral-900">
+    <div class="relative h-36 md:h-60 rounded-none md:rounded-t-xl bg-[url('https://preline.co/assets/svg/examples/abstract-bg-1.svg')] bg-no-repeat bg-cover bg-center">
     </div>
-  <% end %>
+    <div class="px-6 py-12 md:p-12 bg-white md:rounded-b-xl">
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold leading-6 mb-4">Sign In</h1>
+        <p>Please fill in your personal details to sign in.</p>
+      </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="mb-4">
+            <%= f.label :email, class: "inline-block text-lg font-medium text-gray-800 mb-2 dark:text-neutral-200" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "py-3 px-3 pe-11 block w-full border-2 border-gray-200 shadow-sm rounded-lg text-base focus:outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 bg-gray-100", placeholder: "company@email.com" %>
+          </div>
+          <div class="field">
+            <%= f.label :password, class: "inline-block text-lg font-medium text-gray-800 mb-2 dark:text-neutral-200" %><br />
+            <%= f.password_field :password, class: "py-3 px-3 pe-11 block w-full border-2 border-gray-200 shadow-sm rounded-lg text-base focus:outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 bg-gray-100", placeholder: "company@email.com" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Log in" %>
+          </div>
+        <%= render "admin_users/shared/links" %>
+        <% end %>
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= render "admin_users/shared/links" %>
+
