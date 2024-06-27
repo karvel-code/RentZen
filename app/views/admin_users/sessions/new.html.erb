@@ -1,8 +1,8 @@
-<div class="max-w-4xl p-0 md:px-4 md:py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <div class="bg-white md:rounded-xl shadow dark:bg-neutral-900">
+<div class="w-screen h-screen flex">
+  <div class="bg-white md:rounded-xl shadow dark:bg-neutral-900 p-0 md:px-4 md:py-10 sm:px-6 lg:px-8 w-2/5">
     <div class="relative h-36 md:h-60 rounded-none md:rounded-t-xl bg-[url('https://preline.co/assets/svg/examples/abstract-bg-1.svg')] bg-no-repeat bg-cover bg-center">
     </div>
-    <div class="px-6 py-12 md:p-12 bg-white md:rounded-b-xl">
+    <div class="px-6 py-12 md:p-12 bg-white md:rounded-b-xl md:border-b md:border-x md:shadow-lg">
       <div class="mb-6">
         <h1 class="text-3xl font-bold leading-6 mb-4">Sign In</h1>
         <p>Please fill in your personal details to sign in.</p>
@@ -18,19 +18,24 @@
           </div>
 
           <% if devise_mapping.rememberable? %>
-            <div class="field">
+            <div class="field mb-4 mt-2">
               <%= f.check_box :remember_me %>
               <%= f.label :remember_me %>
             </div>
           <% end %>
 
-          <div class="actions">
-            <%= f.submit "Log in" %>
+          <div class="mb-4">
+            <%= f.submit "Log in", class: "w-full py-3 px-4 items-center gap-x-2 text-base text-center font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
           </div>
-        <%= render "admin_users/shared/links" %>
+          <div class="mb-4">
+            <%= render "admin_users/shared/links" %>
+          </div>
         <% end %>
     </div>
   </div>
+  <div class="relative hidden w-0 flex-1 lg:block w-3/5">
+		<img class="absolute inset-0 h-full w-full object-cover" src="https://media.istockphoto.com/id/1034210606/photo/row-of-new-apartment-houses.jpg?s=2048x2048&w=is&k=20&c=eiYQwA8cTBYnj_or2ADNr-qMTgyvDY3u3hrtPAKG9oE=" alt="">
+	</div>
 </div>
 
 
