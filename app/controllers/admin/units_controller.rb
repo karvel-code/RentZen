@@ -6,7 +6,9 @@ class Admin::UnitsController < Admin::BaseController
     @unit = @floor.units.build
   end
 
-  def show; end
+  def show
+    @unit_owners = @unit.unit_owners.order(created_at: :desc)
+  end
 
   def create
     @unit = @floor.units.build(unit_params)
