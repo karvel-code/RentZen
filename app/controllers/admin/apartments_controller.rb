@@ -20,7 +20,7 @@ class Admin::ApartmentsController < Admin::BaseController
     respond_to do |format|
       if @apartment.save
         format.html {redirect_to apartments_path, notice: "Apartment added successfully" }
-        format.turbo_stream
+        # format.turbo_stream
       else
         render :new, status: :unprocessable_entity
       end
@@ -42,7 +42,7 @@ class Admin::ApartmentsController < Admin::BaseController
 
   def destroy
     @apartment.destroy
-    redirect_to apartments_path, notice: 'Apartment Deleted Successfully !'
+    redirect_to apartments_path, alert: 'Apartment Deleted Successfully !'
   end
 
   private

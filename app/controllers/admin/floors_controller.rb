@@ -37,7 +37,7 @@ class Admin::FloorsController < Admin::BaseController
 
   def destroy
     @floor.destroy
-    redirect_to apartment_path(@current_apartment), notice: 'Floor Deleted Successfully'
+    redirect_to apartment_path(@current_apartment), alert: 'Floor Deleted Successfully'
   end
 
   private
