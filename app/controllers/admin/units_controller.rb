@@ -35,7 +35,7 @@ class Admin::UnitsController < Admin::BaseController
 
   def destroy
     @unit.destroy
-    redirect_to floor_path(@floor), notice: 'Floor Deleted Successfully'
+    redirect_to floor_path(@floor), alert: 'Unit Deleted Successfully'
   end
 
   private
