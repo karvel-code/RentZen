@@ -7,18 +7,18 @@ class Admin::UnitOwner::InvitationsController < Admin::BaseController
   end
 
   def create
-    existing_unit_owner = UnitOwner.find_by(email: invite_params[:email])
-
-    if existing_unit_owner
-      flash[:error] = "The email #{invite_params[:email]} you are trying to invite already exists."
-      return existing_unit_owner
+    invite_service = Invitation::InviteUnitOwnerService.new(current_admin_user, invite_params)
+    unit = invite_service.unit
+    
+    ActiveRecord::Base.transaction do
+      invite_service.call
     end
 
-    invitee = UnitOwner.invite!({email: invite_params[:email]}, current_admin_user)
-    
-    unit = Unit.find(invite_params[:unit_id])
-    OwnerInformation.create!(unit_id: unit.id , unit_owner_id: invitee.id) if invitee
-    redirect_to floor_unit_path(floor_id: unit.floor.id, id: unit.id ), notice: "You have successfully invited a tenant to this unit."
+    if invite_service.errors.empty?
+      redirect_to floor_unit_path(floor_id: unit.floor.id, id: unit.id ), notice: "You have successfully invited a tenant to this unit."
+    else
+      redirect_to floor_unit_path(floor_id: unit.floor.id, id: unit.id ), alert: "#{invite_service.errors.to_sentence}"
+    end
   end
 
   private

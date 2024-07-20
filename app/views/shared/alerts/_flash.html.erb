@@ -4,7 +4,7 @@
 	</div>
 <% end %>
 
-<% if flash[:alert] %>
+<% if flash[:alert] || flash[:error] %>
 	<div data-controller="flash" class="mt-2 bg-red-500 text-sm text-white rounded-lg p-4" role="alert">
 		<span class="font-bold"><%= flash[:alert] %></span>
 	</div>
