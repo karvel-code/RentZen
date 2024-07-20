@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :unit_owners, controllers: {
-    # invitations: 'unit_owners/invitations'
+    invitations: 'unit_owners/invitations'
   }
 
   devise_for :admin_users, controllers: {
