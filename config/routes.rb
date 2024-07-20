@@ -42,5 +42,9 @@ Rails.application.routes.draw do
 
   scope module: :tenant, path: '/t' do
     get 'dashboard/index'
+
+    namespace :onboarding, path: 'onboarding' do
+      
+    end
   end
 end

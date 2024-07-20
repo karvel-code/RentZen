@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_20_133506) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_20_160345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,6 +98,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_20_133506) do
     t.string "status", default: "invited", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name", default: "", null: false
+    t.string "surname", default: "", null: false
+    t.string "middle_name"
+    t.string "phone", default: "", null: false
+    t.string "gender"
+    t.string "avatar", default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
     t.index ["unit_id"], name: "index_owner_informations_on_unit_id"
     t.index ["unit_owner_id"], name: "index_owner_informations_on_unit_owner_id"
   end
