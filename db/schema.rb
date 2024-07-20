@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_24_093438) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_20_133506) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -125,6 +125,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_24_093438) do
     t.index ["reset_password_token"], name: "index_unit_owners_on_reset_password_token", unique: true
   end
 
+  create_table "unit_payments", force: :cascade do |t|
+    t.bigint "unit_owner_id", null: false
+    t.bigint "unit_id", null: false
+    t.string "status", default: "pending", null: false
+    t.string "description"
+    t.decimal "amount_due", null: false
+    t.decimal "amount_paid", default: "0.0", null: false
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_unit_payments_on_unit_id"
+    t.index ["unit_owner_id"], name: "index_unit_payments_on_unit_owner_id"
+  end
+
   create_table "units", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "floor_id", null: false
@@ -134,6 +148,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_24_093438) do
     t.index ["name"], name: "index_units_on_name"
   end
 
+  create_table "utility_payments", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "amount", null: false
+    t.string "description"
+    t.bigint "unit_payment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_payment_id"], name: "index_utility_payments_on_unit_payment_id"
+  end
+
   add_foreign_key "admin_user_profiles", "admin_users"
   add_foreign_key "admin_users", "accounts"
   add_foreign_key "apartments", "accounts"
@@ -141,5 +165,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_24_093438) do
   add_foreign_key "landlords", "accounts"
   add_foreign_key "owner_informations", "unit_owners"
   add_foreign_key "owner_informations", "units"
+  add_foreign_key "unit_payments", "unit_owners"
+  add_foreign_key "unit_payments", "units"
   add_foreign_key "units", "floors"
+  add_foreign_key "utility_payments", "unit_payments"
 end
