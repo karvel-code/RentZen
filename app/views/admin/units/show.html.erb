@@ -1,5 +1,4 @@
 <!-- Unit Details Page -->
-
 <div class="w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
     <div class="p-4 md:px-8 md:py-12 grid grid-cols-4 gap-x-4">
@@ -70,29 +69,8 @@
     </div>
   </div>
 <div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Table Section -->
-<div class="max-w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+<div class="w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   <!-- Card -->
   <div class="flex flex-col">
     <div class="-m-1.5 overflow-x-auto">
@@ -104,9 +82,6 @@
               <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
                 <%= @unit.name %> Owners
               </h2>
-              <p class="text-sm text-gray-600 dark:text-neutral-400">
-                Keys you have generated to connect with third-party clients or access the <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500" href="#">Preline API.</a>
-              </p>
             </div>
 
             <div>
@@ -126,16 +101,9 @@
 
           <%= turbo_frame_tag UnitOwner.new %>
           <!-- Table -->
-          <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+          <table class="w-full divide-y divide-gray-200 dark:divide-neutral-700">
             <thead class="bg-gray-50 dark:bg-neutral-900">
               <tr>
-                <th scope="col" class="ps-6 py-3 text-start">
-                  <label for="hs-at-with-checkboxes-main" class="flex">
-                    <input type="checkbox" class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-main">
-                    <span class="sr-only">Checkbox</span>
-                  </label>
-                </th>
-
                 <th scope="col" class="px-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
@@ -155,7 +123,7 @@
                 <th scope="col" class="px-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Status
+                      Description
                     </span>
                   </div>
                 </th>
@@ -163,10 +131,11 @@
                 <th scope="col" class="px-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                      Description
+                      Status
                     </span>
                   </div>
                 </th>
+
 
                 <th scope="col" class="px-6 py-3 text-end"></th>
               </tr>
@@ -174,6 +143,116 @@
 
             <tbody id="unit_owners" class="divide-y divide-gray-200 dark:divide-neutral-700">
               <%= render @unit_owners %>
+
+
+
+              <!-- Begin :: Sample Unit Owners Record -->
+
+              <tr>
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Leon MK</span>
+                  </div>
+                </td>
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                      <span class="text-sm text-gray-600 dark:text-gray-400">Leonmk@kenya</span>
+                  </div>
+                </td>
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                      <span class="text-sm text-gray-600 dark:text-gray-400">cute lil house</span>
+                  </div>
+                </td>
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <div class="w-6 h-6 rounded-full bg-green-800"></div>
+                  </div>
+                </td>
+
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-1.5">
+                    <div class="hs-dropdown relative inline-block [--placement:bottom-right]">
+                      <button id="hs-table-dropdown-1" type="button" class="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                        <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                      </button>
+                      <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2 mt-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700" aria-labelledby="hs-table-dropdown-1">
+                        <div class="py-2 first:pt-0 last:pb-0">
+                          <%#= link_to floor_unit_path(floor_id: params[:id] ,id: unit.id), class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" do %>
+                              Show
+                          <%# end %>
+                          <%#= link_to edit_floor_unit_path(floor_id: params[:id] ,id: unit.id), data: { turbo_frame: "modal"}, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" do %>
+                              Edit
+                          <%# end %>
+                        </div>
+                        <div class="py-2 first:pt-0 last:pb-0">
+                          <%#= link_to floor_unit_path(floor_id: params[:id] ,id: unit.id), data: { turbo_frame: "_top", "turbo_method": :delete, turbo_confirm: "Are you sure?" }, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700" do %>
+                              Delete
+                          <%# end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Diana MK</span>
+                  </div>
+                </td>
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                      <span class="text-sm text-gray-600 dark:text-gray-400">dianamk@kenya</span>
+                  </div>
+                </td>
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                      <span class="text-sm text-gray-600 dark:text-gray-400">a lil small for me :?</span>
+                  </div>
+                </td>
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-3">
+                    <div class="w-6 h-6 rounded-full bg-red-900"></div>
+                  </div>
+                </td>
+
+
+                <td class="h-px w-px whitespace-nowrap">
+                  <div class="px-6 py-1.5">
+                    <div class="hs-dropdown relative inline-block [--placement:bottom-right]">
+                      <button id="hs-table-dropdown-1" type="button" class="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                        <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                      </button>
+                      <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2 mt-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700" aria-labelledby="hs-table-dropdown-1">
+                        <div class="py-2 first:pt-0 last:pb-0">
+                          <%#= link_to floor_unit_path(floor_id: params[:id] ,id: unit.id), class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" do %>
+                              Show
+                          <%# end %>
+                          <%#= link_to edit_floor_unit_path(floor_id: params[:id] ,id: unit.id), data: { turbo_frame: "modal"}, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" do %>
+                              Edit
+                          <%# end %>
+                        </div>
+                        <div class="py-2 first:pt-0 last:pb-0">
+                          <%#= link_to floor_unit_path(floor_id: params[:id] ,id: unit.id), data: { turbo_frame: "_top", "turbo_method": :delete, turbo_confirm: "Are you sure?" }, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700" do %>
+                              Delete
+                          <%# end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- End :: Sample Unit Owners Record -->
+
             </tbody>
           </table>
           <!-- End Table -->
