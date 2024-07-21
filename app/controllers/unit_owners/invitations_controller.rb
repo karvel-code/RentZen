@@ -56,7 +56,9 @@ class UnitOwners::InvitationsController < DeviseController
         set_flash_message :notice, flash_message if is_flashing_format?
         resource.after_database_authentication
         sign_in(resource_name, resource)
-        respond_with resource, location: '/t/dashboard/index'
+        ## Check this based on status
+        owner_information = resource.owner_informations.last
+        respond_with resource, location: edit_onboarding_owner_information_path(owner_information)
       else
         set_flash_message :notice, :updated_not_active if is_flashing_format?
         respond_with resource, location: new_session_path(resource_name)
