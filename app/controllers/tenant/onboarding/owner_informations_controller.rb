@@ -17,7 +17,7 @@ module Tenant
     private
 
     def set_owner_information
-      @owner_information = OwnerInformation.find(params[:id])
+      @owner_information = current_unit_owner.owner_informations.find(params[:id])
     end
 
     def owner_informations_params
