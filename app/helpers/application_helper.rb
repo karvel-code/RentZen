@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
   # def tailwind_classes_for(flash_type)
   #   {
   #     notice: "bg-green-400 border-l-4 border-green-700 text-white",

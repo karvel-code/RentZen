@@ -3,7 +3,7 @@ class Admin::ApartmentsController < Admin::BaseController
   before_action :set_account, only: %i[create]
 
   def index
-    @apartments = Apartment.order(created_at: :desc)
+    @pagy, @apartments = pagy(Apartment.order(created_at: :desc))
   end
 
   def new
