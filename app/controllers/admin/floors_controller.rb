@@ -7,7 +7,7 @@ class Admin::FloorsController < Admin::BaseController
   end
 
   def show
-    @units = @floor.units.order(created_at: :desc)
+    @pagy, @units = pagy(@floor.units.order(created_at: :desc))
   end
 
   def create
