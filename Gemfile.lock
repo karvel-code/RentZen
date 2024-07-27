@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/leastbad/all_futures.git
+  revision: 925d64740f9299b4c7d24b88543ca469685a0ccd
+  specs:
+    all_futures (1.0.3)
+      activeentity (~> 6.3)
+      activemodel (>= 4.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      kredis (~> 1.0)
+      ulid (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,6 +58,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    activeentity (6.3.0)
+      activemodel (>= 6.0, < 8)
+      activesupport (>= 6.0, < 8)
     activejob (7.0.8)
       activesupport (= 7.0.8)
       globalid (>= 0.3.6)
@@ -118,6 +133,10 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.3.0)
       railties (>= 6.0.0)
+    kredis (1.7.0)
+      activemodel (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      redis (>= 4.2, < 6)
     launchy (3.0.1)
       addressable (~> 2.8)
       childprocess (~> 5.0)
@@ -225,6 +244,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    ulid (1.4.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -244,6 +264,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  all_futures!
   annotate
   bootsnap
   capybara

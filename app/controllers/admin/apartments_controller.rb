@@ -1,9 +1,10 @@
 class Admin::ApartmentsController < Admin::BaseController
   before_action :set_apartment, only: %i[edit update destroy show]
   before_action :set_account, only: %i[create]
+  before_action :set_filter, only: %i[index]
 
   def index
-    @pagy, @apartments = pagy(Apartment.order(created_at: :desc))
+    @pagy, @apartments = pagy(@filter.scope.latest)
   end
 
   def new
@@ -57,6 +58,15 @@ class Admin::ApartmentsController < Admin::BaseController
 
   def set_apartment
     @apartment = Apartment.find(params[:id])
+  end
+
+  def set_filter
+    @filter = params[:filter].present? ? ApartmentFilter.find(params[:filter]) : ApartmentFilter.new
+    @filter.update(filter_params)
+  end
+
+  def filter_params
+    params.permit(:search, :current_account_id)
   end
   
 end

@@ -79,3 +79,4 @@ end
 gem "devise", "~> 4.9"
 gem 'devise_invitable', '~> 2.0.0'
 gem 'pagy', '~> 5.10'
+gem "all_futures", github: "leastbad/all_futures"
