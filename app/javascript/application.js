@@ -14,3 +14,7 @@ document.addEventListener("turbo:load", function(event) {
   HSOverlay.autoInit();
   HSSelect.autoInit();
 });
+
+document.addEventListener("turbo:visit", function(event) {
+  HSStaticMethods.autoInit();
+});
