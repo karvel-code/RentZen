@@ -1,9 +1,11 @@
 class Admin::ApartmentsController < Admin::BaseController
   before_action :set_apartment, only: %i[edit update destroy show]
   before_action :set_account, only: %i[create]
+  before_action :set_filter, only: %i[index]
+  before_action :set_floor_filter, only: %i[show]
 
   def index
-    @pagy, @apartments = pagy(Apartment.order(created_at: :desc))
+    @pagy, @apartments = pagy(@filter.scope.latest)
   end
 
   def new
@@ -11,7 +13,7 @@ class Admin::ApartmentsController < Admin::BaseController
   end
 
   def show
-    @pagy, @floors = pagy(@apartment.floors.order(created_at: :desc))
+    @pagy, @floors = pagy(@filter.scope.latest)
   end
 
   def create
@@ -57,6 +59,25 @@ class Admin::ApartmentsController < Admin::BaseController
 
   def set_apartment
     @apartment = Apartment.find(params[:id])
+  end
+
+  def set_filter
+    @filter = params[:filter].present? ? ApartmentFilter.find(params[:filter]) : ApartmentFilter.new
+    @filter.update(filter_params)
+  end
+
+  def filter_params
+    params.permit(:search, :current_account_id)
+  end
+
+  def set_floor_filter
+    @filter = params[:filter].present? ? FloorFilter.find(params[:filter]) : FloorFilter.new
+    @filter.update(floor_filter_params)
+    @filter.update(apartment_id: params[:id]) if params[:id].present?
+  end
+
+  def floor_filter_params
+    params.permit(:search, :apartment_id)
   end
   
 end
