@@ -36,7 +36,7 @@ class Invitation::InviteUnitOwnerService < ApplicationService
   def existing_unit_owner?
     # Remember to add status for checking if the unit owner is the current unit owner
     unit_owner = UnitOwner.find_by(email: @invite_params.dig(:email))
-    unit.unit_owners.owner_informations.where(status: ["current", "invited"]).present?
+    unit.unit_owners.map{|unit_owner| unit_owner.owner_informations.where(status: ["current", "invited"])}.present?
   end
 
   def add_error(message)
