@@ -4,16 +4,16 @@
   <div class="flex flex-col">
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
-        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
           <!-- Header -->
-          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200">
             <!-- Input -->
             <%= render "admin/apartments/floors/filter", apartment_id: params[:id] %>
             <!-- End Input -->
 
             <div>
               <div class="inline-flex gap-x-2">
-                <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800" href="#">
+                <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" href="#">
                   View all
                 </a>
 
@@ -29,12 +29,12 @@
           <%= turbo_frame_tag Floor.new %>
           <!-- Table -->
           <%= turbo_frame_tag "floors-table" do %>
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
-              <thead class="bg-gray-50 dark:bg-neutral-900">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-start">
                     <div class="flex items-center gap-x-2">
-                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
                         Floor Number
                       </span>
                     </div>
@@ -42,7 +42,7 @@
 
                   <th scope="col" class="px-6 py-3 text-start">
                     <div class="flex items-center gap-x-2">
-                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
                       No of Units
                       </span>
                     </div>
@@ -50,7 +50,7 @@
                   <th scope="col" class="px-6 py-3 text-end"></th>
                 </tr>
               </thead>
-                  <tbody id="floors">
+                  <tbody id="floors" class="divide-y divide-gray-200">
                       <%= render @floors, apartment: @apartment %>
                   </tbody>
             </table>
