@@ -30,13 +30,13 @@ class Invitation::InviteUnitOwnerService < ApplicationService
 
   def vacant_unit?
     # Remember to add status for checking if the unit owner is the current unit owner
-    unit.unit_owners.present?
+    unit.unit_owners.map{|unit_owner| unit_owner.owner_informations.where(status: ["current", "invited"])}.flatten.present?
   end
 
   def existing_unit_owner?
     # Remember to add status for checking if the unit owner is the current unit owner
     unit_owner = UnitOwner.find_by(email: @invite_params.dig(:email))
-    unit_owner.present?
+    unit.unit_owners.map{|unit_owner| unit_owner.owner_informations.where(status: ["current", "invited"])}.flatten.present?
   end
 
   def add_error(message)

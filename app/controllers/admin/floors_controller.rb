@@ -1,13 +1,14 @@
 class Admin::FloorsController < Admin::BaseController
   before_action :set_apartment
   before_action :set_floor, only: %i[show edit update destroy]
+  before_action :set_filter, only: %i[show]
 
   def new
     @floor = @current_apartment.floors.build
   end
 
   def show
-    @pagy, @units = pagy(@floor.units.order(created_at: :desc))
+    @pagy, @units = pagy(@filter.scope.latest)
   end
 
   def create
@@ -53,4 +54,15 @@ class Admin::FloorsController < Admin::BaseController
   def set_apartment
     @current_apartment = Apartment.find(params[:apartment_id])
   end
+
+  def set_filter
+    @filter = params[:filter].present? ? UnitFilter.find(params[:filter]) : UnitFilter.new
+    @filter.update(filter_params)
+    @filter.update(floor_id: params[:id]) if params[:id].present?
+  end
+
+  def filter_params
+    params.permit(:search, :floor_id)
+  end
+
 end

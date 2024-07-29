@@ -29,6 +29,10 @@ class Apartment < ApplicationRecord
   end
 
   after_create_commit :create_floors
+
+  def floor_count
+    floors.count
+  end
   
   private
 
