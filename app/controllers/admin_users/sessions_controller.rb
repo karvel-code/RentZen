@@ -21,14 +21,7 @@ class AdminUsers::SessionsController < Devise::SessionsController
   # protected
 
   def after_sign_in_path_for(resource)
-    if resource.confirmation_code.present? && resource.confirmation_time.present?
-      dashboard_index_path
-    else
-      user_code = SecureRandom.hex(2)[0, 4]
-      resource.update(confirmation_code: user_code)
-      ClientUserMailer.with(user: resource).confirm_code.deliver_later
-      new_confirm_user_path(id: resource.id)
-    end
+    dashboard_index_path
   end
 
   def after_sign_out_path_for(_resource_or_scope)
