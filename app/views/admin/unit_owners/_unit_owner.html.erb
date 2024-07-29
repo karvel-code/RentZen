@@ -1,7 +1,7 @@
 <tr id="<%= unit_owner.id %>">
   <td class="h-px w-px whitespace-nowrap">
     <div class="px-6 py-3">
-      <span class="text-sm text-gray-600 dark:text-gray-400"><%= unit_owner.owner_informations.first_name %> <%= unit_owner.owner_informations.surname %></span>
+      <span class="text-sm text-gray-600 dark:text-gray-400"><%= OwnerInformation.current_unit_info(@unit.id, unit_owner.id)&.first_name%></span>
     </div>
   </td>
 
@@ -13,18 +13,12 @@
 
   <td class="h-px w-px whitespace-nowrap">
     <div class="px-6 py-3">
-      <span class="text-sm text-gray-600 dark:text-gray-400"><%= unit_owner.email %></span>
-    </div>
-  </td>
-
-  <td class="h-px w-px whitespace-nowrap">
-    <div class="px-6 py-3">
-      <% if unit_owner.owner_informations.status == 'current' %>
-        <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-800/30 dark:text-teal-500"><%= unit_owner.owner_informations.status %></span>
-      <% elsif unit_owner.owner_informations.status == 'invited' %>
-        <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800/30 dark:text-blue-500"><%= unit_owner.owner_informations.status %></span>
-      <% elsif unit_owner.owner_informations.status == 'past'%>
-        <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-800/30 dark:text-red-500"><%= unit_owner.owner_informations.status %></span>
+      <% if OwnerInformation.current_unit_info(@unit.id, unit_owner.id)&.status == 'current' %>
+        <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-800/30 dark:text-teal-500"><%= OwnerInformation.current_unit_info(@unit.id, unit_owner.id)&.status %></span>
+      <% elsif OwnerInformation.current_unit_info(@unit.id, unit_owner.id)&.status == 'invited' %>
+        <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800/30 dark:text-blue-500"><%= OwnerInformation.current_unit_info(@unit.id, unit_owner.id)&.status %></span>
+      <% elsif OwnerInformation.current_unit_info(@unit.id, unit_owner.id)&.status == 'past'%>
+        <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-800/30 dark:text-red-500"><%= OwnerInformation.current_unit_info(@unit.id, unit_owner.id)&.status %></span>
       <% end %>
     </div>
   </td>
