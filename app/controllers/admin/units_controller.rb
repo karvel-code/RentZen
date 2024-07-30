@@ -1,9 +1,13 @@
 class Admin::UnitsController < Admin::BaseController
-  before_action :set_floor
   before_action :set_unit, only: %i[show edit update destroy]
+  before_action :set_filter, only: %i[index]
+
+  def index
+    @pagy, @units = pagy(@filter.scope.latest)
+  end
 
   def new
-    @unit = @floor.units.build
+    @unit = Unit.new
   end
 
   def show
@@ -11,11 +15,11 @@ class Admin::UnitsController < Admin::BaseController
   end
 
   def create
-    @unit = @floor.units.build(unit_params)
+    @unit = Unit.new(unit_params)
 
     respond_to do |format|
       if @unit.save
-        format.html {redirect_to floor_path(@floor), notice: "Unit added successfully" }
+        format.html {redirect_to request.referrer, notice: "Unit added successfully" }
         # format.turbo_stream
       else
         render :new, status: :unprocessable_entity
@@ -28,7 +32,7 @@ class Admin::UnitsController < Admin::BaseController
   def update
     respond_to do |format|
       if @unit.update(unit_params)
-        format.html { redirect_to floor_path(@floor), notice: "Unit updated successfully" }
+        format.html {redirect_to request.referrer, notice: "Unit updated successfully" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -37,25 +41,27 @@ class Admin::UnitsController < Admin::BaseController
 
   def destroy
     @unit.destroy
-    redirect_to floor_path(@floor), alert: 'Unit Deleted Successfully'
+    redirect_to units_path, alert: 'Unit Deleted Successfully'
   end
 
   private
 
   def unit_params
-    params.require(:unit).permit(:name)
-  end
-
-  def apartment
-    @floor.apartment
+    params.require(:unit).permit(:name, :unit, :floor_id)
   end
 
   def set_unit
-    @unit = @floor.units.find(params[:id])
+    @unit = Unit.find(params[:id])
   end
 
-  def set_floor
-    @floor = Floor.find(params[:floor_id])
+  def set_filter
+    @filter = params[:filter].present? ? UnitFilter.find(params[:filter]) : UnitFilter.new
+    @filter.update(filter_params)
+    @filter.update(current_account_id: current_account.id)
+  end
+
+  def filter_params
+    params.permit(:search, :floor_id, :current_account_id)
   end
 
 end

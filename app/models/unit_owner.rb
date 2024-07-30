@@ -36,4 +36,8 @@ class UnitOwner < ApplicationRecord
   has_many :units, through: :owner_informations
   has_many :unit_payments
 
+  scope :search_with, lambda { |q|
+    where("email ILIKE ?", "%#{q}%")
+  }
+
 end
