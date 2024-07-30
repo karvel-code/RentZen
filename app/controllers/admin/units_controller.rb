@@ -19,7 +19,7 @@ class Admin::UnitsController < Admin::BaseController
 
     respond_to do |format|
       if @unit.save
-        format.html {redirect_to units_path, notice: "Unit added successfully" }
+        format.html {redirect_to request.referrer, notice: "Unit added successfully" }
         # format.turbo_stream
       else
         render :new, status: :unprocessable_entity
@@ -32,7 +32,7 @@ class Admin::UnitsController < Admin::BaseController
   def update
     respond_to do |format|
       if @unit.update(unit_params)
-        format.html {redirect_to units_path, notice: "Unit updated successfully" }
+        format.html {redirect_to request.referrer, notice: "Unit updated successfully" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
