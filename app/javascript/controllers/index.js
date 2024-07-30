@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
+
+import HwComboboxController from "@josefarias/hotwire_combobox"
+application.register("hw-combobox", HwComboboxController)

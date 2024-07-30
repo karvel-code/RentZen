@@ -4,6 +4,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
+    "@josefarias/hotwire_combobox": "^0.3.1",
     "alpinejs": "^3.13.7",
     "autoprefixer": "^10.4.19",
     "esbuild": "^0.19.12",
