@@ -15,13 +15,16 @@ Rails.application.routes.draw do
   root "home#index"
   scope module: :admin, path: '/a' do
     get 'dashboard/index'
+
     resources :apartments do
-      resources :floors
+      resources :floors, except: %i[index]
     end
 
     resources :floors do
-      resources :units
+      resources :units, except: %i[index]
     end
+
+    resources :units, only: %i[index]
 
     namespace :unit_owner do
       resources :units do

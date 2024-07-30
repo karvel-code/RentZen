@@ -1,6 +1,12 @@
 class Admin::UnitsController < Admin::BaseController
-  before_action :set_floor
+  before_action :set_floor, except: %i[index]
   before_action :set_unit, only: %i[show edit update destroy]
+  before_action :set_filter, only: %i[index]
+
+  def index
+    # binding.irb
+    @pagy, @units = pagy(@filter.scope.latest)
+  end
 
   def new
     @unit = @floor.units.build
@@ -56,6 +62,16 @@ class Admin::UnitsController < Admin::BaseController
 
   def set_floor
     @floor = Floor.find(params[:floor_id])
+  end
+
+  def set_filter
+    @filter = params[:filter].present? ? UnitFilter.find(params[:filter]) : UnitFilter.new
+    @filter.update(filter_params)
+    @filter.update(current_account_id: current_account.id)
+  end
+
+  def filter_params
+    params.permit(:search, :floor_id, :current_account_id)
   end
 
 end
