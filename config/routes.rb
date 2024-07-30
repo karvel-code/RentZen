@@ -21,10 +21,7 @@ Rails.application.routes.draw do
     end
 
     resources :units
-
-    resources :floors, only: [] do
-      # resources :units, except: %i[index]
-    end
+    resources :unit_owners, only: %i[index show]
 
     namespace :unit_owner do
       resources :units do
