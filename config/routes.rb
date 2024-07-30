@@ -20,11 +20,11 @@ Rails.application.routes.draw do
       resources :floors, except: %i[index]
     end
 
-    resources :floors do
-      resources :units, except: %i[index]
-    end
+    resources :units
 
-    resources :units, only: %i[index]
+    resources :floors, only: [] do
+      # resources :units, except: %i[index]
+    end
 
     namespace :unit_owner do
       resources :units do
