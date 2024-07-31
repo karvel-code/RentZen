@@ -3,12 +3,19 @@ class UnitFilter < AllFutures::Base
   attribute :floor_id, :string
   attribute :current_account_id, :string
 
-  def current_floor
+  def current_account
+    Account.find(current_account_id)
+  end
+
+  def floor
     Floor.find(floor_id)
   end
 
   def scope
-    current_floor.units
-                  .search_with(search)
+    Unit.where({ floor_id: floor_id }.compact_blank)
+          .search_with(search)
+    # current_account.units
+    #               .where({ floor_id: floor_id }.compact_blank)
+    #               .search_with(search)
   end
 end

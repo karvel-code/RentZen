@@ -17,15 +17,15 @@
         </button>
         <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2 mt-2" aria-labelledby="hs-table-dropdown-1">
           <div class="py-2 first:pt-0 last:pb-0">
-            <%= link_to floor_unit_path(floor_id: params[:id] ,id: unit.id), data: {turbo_frame: "_top"}, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" do %>
+            <%= link_to unit_path(unit), data: {turbo_frame: "_top"}, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" do %>
                 Show
             <% end %>
-            <%= link_to edit_floor_unit_path(floor_id: params[:id] ,id: unit.id), data: { turbo_frame: "modal"}, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500" do %>
+            <%= link_to edit_unit_path(unit), data: { turbo_frame: "modal"}, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" do %>
                 Edit
             <% end %>
           </div>
           <div class="py-2 first:pt-0 last:pb-0">
-            <%= link_to floor_unit_path(floor_id: params[:id] ,id: unit.id), data: { turbo_frame: "_top", "turbo_method": :delete, turbo_confirm: "Are you sure?" }, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500" do %>
+            <%= link_to unit_path(floor_id: params[:id] ,id: unit.id), data: { turbo_frame: "_top", "turbo_method": :delete, turbo_confirm: "Are you sure?" }, class: "flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700" do %>
                 Delete
             <% end %>
           </div>
