@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_30_171758) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_31_125522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -156,8 +156,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_30_171758) do
     t.bigint "floor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "cost", default: "0.0", null: false
+    t.bigint "unit_type_id", null: false
     t.index ["floor_id"], name: "index_units_on_floor_id"
     t.index ["name"], name: "index_units_on_name"
+    t.index ["unit_type_id"], name: "index_units_on_unit_type_id"
   end
 
   create_table "utility_payments", force: :cascade do |t|
