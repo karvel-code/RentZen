@@ -3,6 +3,6 @@
   <%= form.hidden_field :current_account_id, value: current_account.id %>
   <div class="relative">
     <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
-    <%= form.search_field :search, id: "hs-as-table-product-review-search", placeholder: "Search", oninput: "this.form.requestSubmit()", class: "py-2 px-3 ps-11 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" %>
+    <%= form.search_field :search, id: "hs-as-table-product-review-search", placeholder: "Search", oninput: "this.form.requestSubmit()", class: "py-2 px-3 block w-full border border-gray-200 rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none shadow-md" %>
   </div>
 <% end %>
