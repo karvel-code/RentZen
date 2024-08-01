@@ -28,5 +28,5 @@ class LeaseAgreement < ApplicationRecord
     current: 'current',
     outgoing: 'outgoing',
     past: 'past'
-  }, validate: true
+  }
 end

@@ -17,11 +17,11 @@ class Invitation::InviteUnitOwnerService < ApplicationService
     return add_error('There is an already existing owner with this email') if existing_unit_owner?
 
     invitee = UnitOwner.invite!({email: invite_params[:email]}, current_admin_user)
-    create_owner_information(invitee)
+    create_lease_agreement(invitee)
   end
 
-  def create_owner_information(invitee)
-    OwnerInformation.create!(unit_id: unit.id , unit_owner_id: invitee.id) if invitee
+  def create_lease_agreement(invitee)
+    LeaseAgreement.create!(unit_id: unit.id , unit_owner_id: invitee.id) if invitee
   end
 
   def unit
@@ -30,13 +30,13 @@ class Invitation::InviteUnitOwnerService < ApplicationService
 
   def vacant_unit?
     # Remember to add status for checking if the unit owner is the current unit owner
-    unit.unit_owners.map{|unit_owner| unit_owner.owner_informations.where(status: ["current", "invited"])}.flatten.present?
+    unit.unit_owners.map{|unit_owner| unit_owner.lease_agreements.where(status: ["current", "invited"])}.flatten.present?
   end
 
   def existing_unit_owner?
     # Remember to add status for checking if the unit owner is the current unit owner
     unit_owner = UnitOwner.find_by(email: @invite_params.dig(:email))
-    unit.unit_owners.map{|unit_owner| unit_owner.owner_informations.where(status: ["current", "invited"])}.flatten.present?
+    unit.unit_owners.map{|unit_owner| unit_owner.lease_agreements.where(status: ["current", "invited"])}.flatten.present?
   end
 
   def add_error(message)
