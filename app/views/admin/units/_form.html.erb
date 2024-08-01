@@ -7,7 +7,7 @@
 
     <div>
       <%= form.label :floor_id, class: "block text-sm font-medium mb-2" %>
-      <%= form.combobox :floor_id, Floor.all %>
+      <%= form.combobox :floor_id, current_account.floors %>
     </div>
 
     <div>
