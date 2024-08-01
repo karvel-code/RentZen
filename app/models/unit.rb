@@ -28,4 +28,8 @@ class Unit < ApplicationRecord
   has_many :unit_owners, through: :owner_informations
   has_many :unit_payments
 
+  def to_combobox_display
+    name
+  end
+
 end
