@@ -14,6 +14,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "status", ["invited", "current", "outgoing", "past"]
+
   create_table "accounts", force: :cascade do |t|
     t.string "company_name", null: false
     t.string "contact_person_name", default: "", null: false
@@ -85,7 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
   create_table "lease_agreements", force: :cascade do |t|
     t.bigint "unit_owner_id", null: false
     t.bigint "unit_id", null: false
-    t.string "status", default: "invited", null: false
+    t.enum "status", default: "invited", enum_type: "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["unit_id"], name: "index_lease_agreements_on_unit_id"

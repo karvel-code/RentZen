@@ -22,7 +22,6 @@
 #  fk_rails_...  (unit_owner_id => unit_owners.id)
 #
 class OwnerInformation < ApplicationRecord
-  belongs_to :unit
   belongs_to :unit_owner
   
   enum status: {

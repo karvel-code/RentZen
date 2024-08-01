@@ -3,7 +3,7 @@
 # Table name: lease_agreements
 #
 #  id            :bigint           not null, primary key
-#  status        :string           default("invited"), not null
+#  status        :enum             default("invited")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  unit_id       :bigint           not null
