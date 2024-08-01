@@ -15,9 +15,9 @@ class Admin::UnitOwner::InvitationsController < Admin::BaseController
     end
 
     if invite_service.errors.empty?
-      redirect_to floor_unit_path(floor_id: unit.floor.id, id: unit.id ), notice: "You have successfully invited a tenant to this unit."
+      redirect_to request.referrer, notice: "You have successfully invited a tenant to this unit."
     else
-      redirect_to floor_unit_path(floor_id: unit.floor.id, id: unit.id ), alert: "#{invite_service.errors.to_sentence}"
+      redirect_to request.referrer, alert: "#{invite_service.errors.to_sentence}"
     end
   end
 

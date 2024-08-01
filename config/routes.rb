@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     get 'dashboard/index'
 
     namespace :onboarding, path: 'onboarding' do
-      resources :owner_informations, only: [:edit, :update]
+      resources :owner_informations, except: %i[index destroy]
     end
   end
 end

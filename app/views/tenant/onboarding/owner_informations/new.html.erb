@@ -10,7 +10,7 @@
       </p>
     </div>
 
-    <%= form_with(model: @owner_information, url: onboarding_owner_information_path(@owner_information), method: :patch) do |form| %>
+    <%= form_with(model: @owner_information, url: onboarding_owner_informations_path, method: :post) do |form| %>
       <!-- Grid -->
       <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
         <div class="sm:col-span-3">
