@@ -8,5 +8,11 @@
 #  updated_at :datetime         not null
 #
 class UnitType < ApplicationRecord
+  include Comboboxable
+
   has_many :units
+
+  def to_combobox_display
+    name
+  end
 end
