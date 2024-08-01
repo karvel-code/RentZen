@@ -12,7 +12,4 @@ class UnitType < ApplicationRecord
 
   has_many :units
 
-  def to_combobox_display
-    name
-  end
 end
