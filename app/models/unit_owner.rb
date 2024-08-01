@@ -32,8 +32,9 @@ class UnitOwner < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :owner_informations
-  has_many :units, through: :owner_informations
+  has_one :owner_information
+  has_many :lease_agreements
+  has_many :units, through: :lease_agreements
   has_many :unit_payments
 
   scope :search_with, lambda { |q|

@@ -8,21 +8,17 @@
 #  gender        :string
 #  middle_name   :string
 #  phone         :string           default(""), not null
-#  status        :string           default("invited"), not null
 #  surname       :string           default(""), not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  unit_id       :bigint           not null
 #  unit_owner_id :bigint           not null
 #
 # Indexes
 #
-#  index_owner_informations_on_unit_id        (unit_id)
 #  index_owner_informations_on_unit_owner_id  (unit_owner_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (unit_id => units.id)
 #  fk_rails_...  (unit_owner_id => unit_owners.id)
 #
 class OwnerInformation < ApplicationRecord

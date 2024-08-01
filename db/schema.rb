@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_31_125522) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,20 +82,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_31_125522) do
     t.index ["name"], name: "index_floors_on_name"
   end
 
-  create_table "landlords", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "surname", null: false
-    t.string "phone"
-    t.bigint "account_id", null: false
+  create_table "lease_agreements", force: :cascade do |t|
+    t.bigint "unit_owner_id", null: false
+    t.bigint "unit_id", null: false
+    t.string "status", default: "invited", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_landlords_on_account_id"
+    t.index ["unit_id"], name: "index_lease_agreements_on_unit_id"
+    t.index ["unit_owner_id"], name: "index_lease_agreements_on_unit_owner_id"
   end
 
   create_table "owner_informations", force: :cascade do |t|
     t.bigint "unit_owner_id", null: false
-    t.bigint "unit_id", null: false
-    t.string "status", default: "invited", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name", default: "", null: false
@@ -104,7 +102,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_31_125522) do
     t.string "phone", default: "", null: false
     t.string "gender"
     t.string "avatar", default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-    t.index ["unit_id"], name: "index_owner_informations_on_unit_id"
     t.index ["unit_owner_id"], name: "index_owner_informations_on_unit_owner_id"
   end
 
@@ -177,8 +174,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_31_125522) do
   add_foreign_key "admin_users", "accounts"
   add_foreign_key "apartments", "accounts"
   add_foreign_key "floors", "apartments"
+  add_foreign_key "lease_agreements", "unit_owners"
+  add_foreign_key "lease_agreements", "units"
   add_foreign_key "owner_informations", "unit_owners"
-  add_foreign_key "owner_informations", "units"
   add_foreign_key "unit_payments", "unit_owners"
   add_foreign_key "unit_payments", "units"
   add_foreign_key "units", "floors"

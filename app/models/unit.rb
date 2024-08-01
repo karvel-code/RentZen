@@ -26,8 +26,8 @@ class Unit < ApplicationRecord
 
   belongs_to :floor
   belongs_to :unit_type
-  has_many :owner_informations
-  has_many :unit_owners, through: :owner_informations
+  has_many :lease_agreements
+  has_many :unit_owners, through: :lease_agreements
   has_many :unit_payments
 
 end
