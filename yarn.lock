@@ -152,6 +152,11 @@
     wrap-ansi "^8.1.0"
     wrap-ansi-cjs "npm:wrap-ansi@^7.0.0"
 
+"@josefarias/hotwire_combobox@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@josefarias/hotwire_combobox/-/hotwire_combobox-0.3.1.tgz#80395c71aa57e22a4686d877eda32ce49a4cc9ec"
+  integrity sha512-LAxwhwYsYmBPAZdDP5qAHdwF5YJZP3nz1x/FNETKzX3cmKWibvzUwsEG980K9voTBwUHvd6wXdk+T9JR/Zm7QA==
+
 "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
   resolved "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz"

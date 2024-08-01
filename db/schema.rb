@@ -177,11 +177,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_31_125522) do
   add_foreign_key "admin_users", "accounts"
   add_foreign_key "apartments", "accounts"
   add_foreign_key "floors", "apartments"
-  add_foreign_key "landlords", "accounts"
   add_foreign_key "owner_informations", "unit_owners"
   add_foreign_key "owner_informations", "units"
   add_foreign_key "unit_payments", "unit_owners"
   add_foreign_key "unit_payments", "units"
   add_foreign_key "units", "floors"
+  add_foreign_key "units", "unit_types"
   add_foreign_key "utility_payments", "unit_payments"
 end

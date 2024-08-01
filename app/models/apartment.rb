@@ -22,6 +22,8 @@
 #  fk_rails_...  (account_id => accounts.id)
 #
 class Apartment < ApplicationRecord
+  include Comboboxable
+
   belongs_to :account
   with_options dependent: :destroy do
     has_many :floors

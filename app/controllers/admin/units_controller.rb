@@ -47,7 +47,7 @@ class Admin::UnitsController < Admin::BaseController
   private
 
   def unit_params
-    params.require(:unit).permit(:name, :unit, :floor_id)
+    params.require(:unit).permit(:name, :unit, :floor_id, :unit_type_id)
   end
 
   def set_unit

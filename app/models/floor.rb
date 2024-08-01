@@ -18,8 +18,11 @@
 #  fk_rails_...  (apartment_id => apartments.id)
 #
 class Floor < ApplicationRecord
+  include Comboboxable
+
   belongs_to :apartment
   with_options dependent: :destroy do
     has_many :units
   end
+
 end

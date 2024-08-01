@@ -22,6 +22,8 @@
 #  fk_rails_...  (unit_type_id => unit_types.id)
 #
 class Unit < ApplicationRecord
+  include Comboboxable
+
   belongs_to :floor
   belongs_to :unit_type
   has_many :owner_informations
