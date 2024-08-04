@@ -29,4 +29,8 @@ class OwnerInformation < ApplicationRecord
       self.find_by(unit_id: unit_id, unit_owner_id: unit_owner_id)
     end
   end
+
+  def name
+    "#{first_name} #{middle_name} #{surname}"
+  end
 end
