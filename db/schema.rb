@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_04_130131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_apartments_on_account_id"
     t.index ["name"], name: "index_apartments_on_name"
+  end
+
+  create_table "checklist_items", force: :cascade do |t|
+    t.string "description", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_checklist_items_on_account_id"
   end
 
   create_table "floors", force: :cascade do |t|
@@ -177,6 +185,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
   add_foreign_key "admin_user_profiles", "admin_users"
   add_foreign_key "admin_users", "accounts"
   add_foreign_key "apartments", "accounts"
+  add_foreign_key "checklist_items", "accounts"
   add_foreign_key "floors", "apartments"
   add_foreign_key "lease_agreements", "unit_owners"
   add_foreign_key "lease_agreements", "units"
