@@ -1,11 +1,11 @@
 <!-- Card Section -->
-<div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto"><!-- Card -->
-  <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-neutral-800">
+<div class="max-w-4xl px-4 py-24 sm:px-6 lg:px-8 mx-auto"><!-- Card -->
+  <div class="bg-white rounded-xl shadow p-4 sm:p-7">
     <div class="mb-8">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-neutral-200">
-        Profile
+      <h2 class="text-xl font-bold text-gray-800">
+        Tenant Profile
       </h2>
-      <p class="text-sm text-gray-600 dark:text-neutral-400">
+      <p class="text-sm text-gray-600">
         Manage your name, password and account settings.
       </p>
     </div>
@@ -14,7 +14,7 @@
       <!-- Grid -->
       <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
         <div class="sm:col-span-3">
-          <label class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+          <label class="inline-block text-sm text-gray-800 mt-2.5">
             Profile photo
           </label>
         </div>
@@ -22,10 +22,10 @@
         
         <div class="sm:col-span-9">
           <div class="flex items-center gap-5">
-            <img class="inline-block size-16 rounded-full ring-2 ring-white dark:ring-neutral-900" src="<%= @owner_information&.avatar %>" alt="Image Description">
+            <img class="inline-block size-16 rounded-full ring-2 ring-white" src="<%= @owner_information&.avatar %>" alt="Image Description">
             <div class="flex gap-x-2">
               <div>
-                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
+                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
                   Upload photo
                 </button>
@@ -37,10 +37,10 @@
 
         <div class="sm:col-span-3">
           <div class="inline-block">
-            <label for="phone" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+            <label for="phone" class="inline-block text-sm text-gray-800 mt-2.5">
               Phone
             </label>
-            <span class="text-sm text-gray-400 dark:text-neutral-600">
+            <span class="text-sm text-gray-400">
               (Optional)
             </span>
           </div>
@@ -49,15 +49,15 @@
 
         <div class="sm:col-span-9">
           <div class="sm:flex">
-            <%= form.text_field :phone, id: "phone", class: "py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600", placeholder: "+254XXXXXX123", required: true %>
-            <select class="py-2 px-3 pe-9 block w-full sm:w-auto border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+            <%= form.text_field :phone, id: "phone", class: "py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none", placeholder: "+254XXXXXX123", required: true %>
+            <select class="py-2 px-3 pe-9 block w-full sm:w-auto border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
               <option selected>Mobile</option>
               <option>Home</option>
             </select>
           </div>
 
           <p class="mt-3">
-            <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500" href="#">
+            <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium" href="#">
               <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
               Add phone
             </a>
@@ -66,43 +66,43 @@
         <!-- End Col -->
 
         <div class="sm:col-span-3">
-          <label for="first-name" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+          <label for="first-name" class="inline-block text-sm text-gray-800 mt-2.5">
             First Name
           </label>
         </div>
         <!-- End Col -->
 
         <div class="sm:col-span-9">
-          <%= form.text_field :first_name, id: "first-name", class: "py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600", placeholder: "John" , required: true %>
+          <%= form.text_field :first_name, id: "first-name", class: "py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none", placeholder: "John" , required: true %>
         </div>
         <!-- End Col -->
 
         <div class="sm:col-span-3">
-          <label for="middle-name" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+          <label for="middle-name" class="inline-block text-sm text-gray-800 mt-2.5">
             Middle Name
           </label>
         </div>
         <!-- End Col -->
 
         <div class="sm:col-span-9">
-          <%= form.text_field :middle_name, id: "middle-name", class: "py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600", placeholder: "Doe" %>
+          <%= form.text_field :middle_name, id: "middle-name", class: "py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none", placeholder: "Doe" %>
         </div>
         <!-- End Col -->
 
         <div class="sm:col-span-3">
-          <label for="surname" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+          <label for="surname" class="inline-block text-sm text-gray-800 mt-2.5">
             Surname
           </label>
         </div>
         <!-- End Col -->
 
         <div class="sm:col-span-9">
-          <%= form.text_field :surname, id: "surname", class: "py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600", placeholder: "Doey", required: true %>
+          <%= form.text_field :surname, id: "surname", class: "py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none", placeholder: "Doey", required: true %>
         </div>
         <!-- End Col -->
 
         <div class="sm:col-span-3">
-          <label for="af-account-gender-checkbox" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200">
+          <label for="af-account-gender-checkbox" class="inline-block text-sm text-gray-800 mt-2.5">
             Gender
           </label>
         </div>
@@ -110,19 +110,19 @@
 
         <div class="sm:col-span-9">
           <div class="sm:flex">
-            <label for="af-account-gender-checkbox" class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-              <%= form.radio_button :gender, "male", name: "af-account-gender-checkbox", class: "shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-500 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800", id: "af-account-gender-checkbox"%>
-              <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Male</span>
+            <label for="af-account-gender-checkbox" class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+              <%= form.radio_button :gender, "male", name: "af-account-gender-checkbox", class: "shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none", id: "af-account-gender-checkbox"%>
+              <span class="text-sm text-gray-500 ms-3">Male</span>
             </label>
 
-            <label for="af-account-gender-checkbox-female" class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-              <%= form.radio_button :gender, "female", name: "af-account-gender-checkbox", class: "shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-500 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800", id: "af-account-gender-checkbox-female"%>
-              <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Female</span>
+            <label for="af-account-gender-checkbox-female" class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+              <%= form.radio_button :gender, "female", name: "af-account-gender-checkbox", class: "shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none", id: "af-account-gender-checkbox-female"%>
+              <span class="text-sm text-gray-500 ms-3">Female</span>
             </label>
 
-            <label for="af-account-gender-checkbox-other" class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-              <%= form.radio_button :gender, "other", name: "af-account-gender-checkbox", class: "shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-500 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800", id: "af-account-gender-checkbox-other" %>
-              <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Other</span>
+            <label for="af-account-gender-checkbox-other" class="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+              <%= form.radio_button :gender, "other", name: "af-account-gender-checkbox", class: "shrink-0 mt-0.5 border-gray-300 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none", id: "af-account-gender-checkbox-other" %>
+              <span class="text-sm text-gray-500 ms-3">Other</span>
             </label>
           </div>
         </div>
