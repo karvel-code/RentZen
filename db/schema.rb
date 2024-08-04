@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_04_130537) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_04_131034) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -125,6 +125,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_130537) do
     t.index ["unit_owner_id"], name: "index_owner_informations_on_unit_owner_id"
   end
 
+  create_table "unit_owner_checklist_items", force: :cascade do |t|
+    t.bigint "checklist_id", null: false
+    t.bigint "checklist_items_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checklist_id"], name: "index_unit_owner_checklist_items_on_checklist_id"
+    t.index ["checklist_items_id"], name: "index_unit_owner_checklist_items_on_checklist_items_id"
+  end
+
   create_table "unit_owners", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", null: false
@@ -199,6 +208,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_130537) do
   add_foreign_key "lease_agreements", "unit_owners"
   add_foreign_key "lease_agreements", "units"
   add_foreign_key "owner_informations", "unit_owners"
+  add_foreign_key "unit_owner_checklist_items", "checklist_items", column: "checklist_items_id"
+  add_foreign_key "unit_owner_checklist_items", "checklists"
   add_foreign_key "unit_payments", "unit_owners"
   add_foreign_key "unit_payments", "units"
   add_foreign_key "units", "floors"

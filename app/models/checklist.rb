@@ -17,4 +17,6 @@
 #  fk_rails_...  (lease_agreement_id => lease_agreements.id)
 #
 class Checklist < ApplicationRecord
+  belongs_to :lease_agreement
+  has_many :unit_owner_checklist_items
 end

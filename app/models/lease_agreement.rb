@@ -22,6 +22,7 @@
 class LeaseAgreement < ApplicationRecord
   belongs_to :unit
   belongs_to :unit_owner
+  has_one :checklist
   
   enum status: {
     invited: 'invited',
