@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_04_131034) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_04_132843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_131034) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_apartments_on_account_id"
     t.index ["name"], name: "index_apartments_on_name"
+  end
+
+  create_table "checklist_item_responses", force: :cascade do |t|
+    t.boolean "response"
+    t.text "description"
+    t.bigint "unit_owner_checklist_item_id", null: false
+    t.bigint "unit_owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_owner_checklist_item_id"], name: "index_checklist_item_responses_on_unit_owner_checklist_item_id"
+    t.index ["unit_owner_id"], name: "index_checklist_item_responses_on_unit_owner_id"
   end
 
   create_table "checklist_items", force: :cascade do |t|
@@ -202,6 +213,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_131034) do
   add_foreign_key "admin_user_profiles", "admin_users"
   add_foreign_key "admin_users", "accounts"
   add_foreign_key "apartments", "accounts"
+  add_foreign_key "checklist_item_responses", "unit_owner_checklist_items"
+  add_foreign_key "checklist_item_responses", "unit_owners"
   add_foreign_key "checklist_items", "accounts"
   add_foreign_key "checklists", "lease_agreements"
   add_foreign_key "floors", "apartments"
