@@ -18,4 +18,8 @@
 #
 class ChecklistItem < ApplicationRecord
   belongs_to :account
+
+  scope :search_with, lambda { |q|
+    where("description ILIKE ?", "%#{q}%")
+  }
 end

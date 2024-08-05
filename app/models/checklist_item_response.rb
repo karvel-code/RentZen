@@ -21,4 +21,6 @@
 #  fk_rails_...  (unit_owner_id => unit_owners.id)
 #
 class ChecklistItemResponse < ApplicationRecord
+  belongs_to :unit_owner
+  belongs_to :unit_owner_checklist_item
 end
