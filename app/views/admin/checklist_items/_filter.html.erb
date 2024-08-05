@@ -1,0 +1,8 @@
+<%= form_with(url: checklist_items_path, method: :get, data: { turbo_frame: "checklist-items-table"}) do |form| %>
+	<%#= form.hidden_field :filter, value: @filter.id %>
+  <%#= form.hidden_field :current_account_id, value: current_account.id %>
+  <div class="relative">
+    <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
+    <%= form.search_field :search, id: "hs-as-table-product-review-search", placeholder: "Search", oninput: "this.form.requestSubmit()", class: "py-2 px-3 block w-full border border-gray-200 rounded-lg text-sm disabled:opacity-50 disabled:pointer-events-none shadow-md" %>
+  </div>
+<% end %>

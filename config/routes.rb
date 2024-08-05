@@ -16,13 +16,6 @@ Rails.application.routes.draw do
   scope module: :admin, path: '/a' do
     get 'dashboard/index'
 
-    resources :apartments do
-      resources :floors, except: %i[index]
-    end
-
-    resources :units
-    resources :unit_owners, only: %i[index show]
-
     namespace :unit_owner do
       resources :units do
         resources :invitations, only: %i[new create]
@@ -33,6 +26,13 @@ Rails.application.routes.draw do
       resources :account_details, only: %i[new create]
       resources :admin_user_profiles, only: %i[new create]
     end
+
+    resources :apartments do
+      resources :floors, except: %i[index]
+    end
+    resources :units
+    resources :unit_owners, only: %i[index show]
+    resources :checklist_items
 
   end
 

@@ -15,6 +15,6 @@ document.addEventListener("turbo:load", function(event) {
   HSSelect.autoInit();
 });
 
-document.addEventListener("turbo:before-stream-render", function(event) {
+document.addEventListener("turbo:frame-load", function(event) {
   HSStaticMethods.autoInit();
 });

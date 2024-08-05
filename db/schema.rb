@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_04_132843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,33 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
     t.index ["name"], name: "index_apartments_on_name"
   end
 
+  create_table "checklist_item_responses", force: :cascade do |t|
+    t.boolean "response"
+    t.text "description"
+    t.bigint "unit_owner_checklist_item_id", null: false
+    t.bigint "unit_owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_owner_checklist_item_id"], name: "index_checklist_item_responses_on_unit_owner_checklist_item_id"
+    t.index ["unit_owner_id"], name: "index_checklist_item_responses_on_unit_owner_id"
+  end
+
+  create_table "checklist_items", force: :cascade do |t|
+    t.string "description", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_checklist_items_on_account_id"
+  end
+
+  create_table "checklists", force: :cascade do |t|
+    t.string "description"
+    t.bigint "lease_agreement_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lease_agreement_id"], name: "index_checklists_on_lease_agreement_id"
+  end
+
   create_table "floors", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "apartment_id", null: false
@@ -107,6 +134,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
     t.string "gender"
     t.string "avatar", default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
     t.index ["unit_owner_id"], name: "index_owner_informations_on_unit_owner_id"
+  end
+
+  create_table "unit_owner_checklist_items", force: :cascade do |t|
+    t.bigint "checklist_id", null: false
+    t.bigint "checklist_items_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checklist_id"], name: "index_unit_owner_checklist_items_on_checklist_id"
+    t.index ["checklist_items_id"], name: "index_unit_owner_checklist_items_on_checklist_items_id"
   end
 
   create_table "unit_owners", force: :cascade do |t|
@@ -177,10 +213,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_01_162634) do
   add_foreign_key "admin_user_profiles", "admin_users"
   add_foreign_key "admin_users", "accounts"
   add_foreign_key "apartments", "accounts"
+  add_foreign_key "checklist_item_responses", "unit_owner_checklist_items"
+  add_foreign_key "checklist_item_responses", "unit_owners"
+  add_foreign_key "checklist_items", "accounts"
+  add_foreign_key "checklists", "lease_agreements"
   add_foreign_key "floors", "apartments"
   add_foreign_key "lease_agreements", "unit_owners"
   add_foreign_key "lease_agreements", "units"
   add_foreign_key "owner_informations", "unit_owners"
+  add_foreign_key "unit_owner_checklist_items", "checklist_items", column: "checklist_items_id"
+  add_foreign_key "unit_owner_checklist_items", "checklists"
   add_foreign_key "unit_payments", "unit_owners"
   add_foreign_key "unit_payments", "units"
   add_foreign_key "units", "floors"
