@@ -138,11 +138,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_132843) do
 
   create_table "unit_owner_checklist_items", force: :cascade do |t|
     t.bigint "checklist_id", null: false
-    t.bigint "checklist_items_id", null: false
+    t.bigint "checklist_item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["checklist_id"], name: "index_unit_owner_checklist_items_on_checklist_id"
-    t.index ["checklist_items_id"], name: "index_unit_owner_checklist_items_on_checklist_items_id"
+    t.index ["checklist_item_id"], name: "index_unit_owner_checklist_items_on_checklist_item_id"
   end
 
   create_table "unit_owners", force: :cascade do |t|
@@ -221,7 +221,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_132843) do
   add_foreign_key "lease_agreements", "unit_owners"
   add_foreign_key "lease_agreements", "units"
   add_foreign_key "owner_informations", "unit_owners"
-  add_foreign_key "unit_owner_checklist_items", "checklist_items", column: "checklist_items_id"
+  add_foreign_key "unit_owner_checklist_items", "checklist_items"
   add_foreign_key "unit_owner_checklist_items", "checklists"
   add_foreign_key "unit_payments", "unit_owners"
   add_foreign_key "unit_payments", "units"

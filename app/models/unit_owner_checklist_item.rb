@@ -2,21 +2,21 @@
 #
 # Table name: unit_owner_checklist_items
 #
-#  id                 :bigint           not null, primary key
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  checklist_id       :bigint           not null
-#  checklist_items_id :bigint           not null
+#  id                :bigint           not null, primary key
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  checklist_id      :bigint           not null
+#  checklist_item_id :bigint           not null
 #
 # Indexes
 #
-#  index_unit_owner_checklist_items_on_checklist_id        (checklist_id)
-#  index_unit_owner_checklist_items_on_checklist_items_id  (checklist_items_id)
+#  index_unit_owner_checklist_items_on_checklist_id       (checklist_id)
+#  index_unit_owner_checklist_items_on_checklist_item_id  (checklist_item_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (checklist_id => checklists.id)
-#  fk_rails_...  (checklist_items_id => checklist_items.id)
+#  fk_rails_...  (checklist_item_id => checklist_items.id)
 #
 class UnitOwnerChecklistItem < ApplicationRecord
   belongs_to :checklist

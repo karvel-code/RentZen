@@ -29,9 +29,10 @@ class Invitation::CreateChecklistService < ApplicationService
 
   def create_checklist_items
     current_account.checklist_items.each do |checklist_item|
+      # binding.irb
       UnitOwnerChecklistItem.create!(
         checklist_id: new_checklist.id,
-        checklist_items_id: checklist_item.id
+        checklist_item_id: checklist_item.id
       )
     end
   end
