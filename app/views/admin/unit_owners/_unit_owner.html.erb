@@ -1,7 +1,7 @@
 <tr id="<%= unit_owner.id %>">
   <td class="h-px w-px whitespace-nowrap">
     <div class="px-6 py-3">
-      <span class="text-sm text-gray-600 dark:text-gray-400"><%= unit_owner.owner_information.name %></span>
+      <span class="text-sm text-gray-600 dark:text-gray-400"><%= unit_owner.owner_information&.name %></span>
     </div>
   </td>
 
@@ -11,6 +11,7 @@
     </div>
   </td>
 
+  <!--This still needs some correction -->
   <td class="h-px w-px whitespace-nowrap">
     <div class="px-6 py-3">
       <% if unit_owner.lease_agreements.first.status == 'current' %>

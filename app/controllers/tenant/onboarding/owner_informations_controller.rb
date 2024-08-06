@@ -11,7 +11,7 @@ module Tenant
 
       respond_to do |format|
         if @owner_information.save
-          format.html { redirect_to '/t/dashboard/index', notice: "Profile updated successfully" }
+          format.html { redirect_to onboarding_checklists_path, notice: "Profile updated successfully" }
         else
           format.html { render :edit, status: :unprocessable_entity}
         end

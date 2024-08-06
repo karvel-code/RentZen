@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
     namespace :onboarding, path: 'onboarding' do
       resources :owner_informations, except: %i[index destroy]
+      resources :checklists, only: %i[index]
     end
   end
 end
