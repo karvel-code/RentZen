@@ -21,7 +21,8 @@ class Invitation::InviteUnitOwnerService < ApplicationService
   end
 
   def create_lease_agreement(invitee)
-    LeaseAgreement.create!(unit_id: unit.id , unit_owner_id: invitee.id) if invitee
+    lease_agreement = LeaseAgreement.create!(unit_id: unit.id , unit_owner_id: invitee.id) if invitee
+    create_checklist(lease_agreement, current_admin_user)
   end
 
   def unit
@@ -37,6 +38,10 @@ class Invitation::InviteUnitOwnerService < ApplicationService
     # Remember to add status for checking if the unit owner is the current unit owner
     unit_owner = UnitOwner.find_by(email: @invite_params.dig(:email))
     unit.unit_owners.map{|unit_owner| unit_owner.lease_agreements.where(status: ["current", "invited"])}.flatten.present?
+  end
+
+  def create_checklist(lease_agreement, current_admin_user)
+    Invitation::CreateChecklistService.call(lease_agreement, current_admin_user)
   end
 
   def add_error(message)
